@@ -62,7 +62,7 @@
                             <form method="POST" action="{{ route('expenses.destroy', $expense) }}" class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Delete this expense?')">Delete</button>
+                                <button type="button" class="text-red-600 hover:text-red-900" onclick="confirmDelete(this); return false;">Delete</button>
                             </form>
                         </td>
                     </tr>

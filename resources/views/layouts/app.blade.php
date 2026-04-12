@@ -27,12 +27,17 @@
 
     <div class="max-w-6xl mx-auto mt-10 p-6">
         @if(session('success'))
-            <div class="mb-6 p-3 bg-green-100 text-green-700 rounded border border-green-200">
-                {{ session('success') }}
-            </div>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                showToast("{{ session('success') }}");
+            });
+          </script>
         @endif
 
         @yield('content')
     </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/alerts.js') }}"></script>
 </body>
 </html>

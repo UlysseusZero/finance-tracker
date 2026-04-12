@@ -93,12 +93,20 @@
                     class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
             </div>
-            <button
-                type="submit"
-                class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
-            >
-                Add
-            </button>
+            <div class="flex gap-3 mt-6">
+                <button
+                    type="submit"
+                    class="flex-1 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                >
+                    Add
+                </button>
+                <a 
+                    href="{{ url()->previous() }}" 
+                    class="flex-1 text-center bg-red-600 text-white py-2 rounded hover:bg-red-700 transition"
+                >
+                    Cancel
+                </a>
+            </div>
         </form>
     </div>
 </body>
