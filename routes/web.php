@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\ExpensePaymentController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -22,14 +24,15 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/salary', [SalaryController::class, 'index'])->name('salary.index');
-Route::post('/salary', [SalaryController::class, 'store'])->name('salary.store');
+
+
+
 
 // Protected routes
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    });
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/salary', [SalaryController::class, 'index'])->name('salary.index');
+    Route::post('/salary', [SalaryController::class, 'store'])->name('salary.store');
     Route::resource('expenses', ExpenseController::class);
     Route::post('/expense-payments', [ExpensePaymentController::class, 'store'])
         ->name('expense_payments.store');
